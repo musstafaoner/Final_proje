@@ -1,0 +1,178 @@
+# Boş listeler oluşturdum hayvanlar, aşılar ve beslenme ve kurbanlık adında.
+hayvanlar = []
+asilar = []
+beslenme = []
+kurbanlık = []
+
+# Küçükbaş veya büyükbaş hayvan kaydı yapmak için kullanılan fonksiyon.
+def hayvan_kayit(hayvanlar):
+    # Kullanıcıdan hayvan bilgilerini alıyoruz.
+    tur = input("Hayvanın türü: ")
+    kimlik_numarasi = input("Hayvanın kimlik numarası: ")
+    dogum_tarihi = input("Doğum tarihi: ")
+    cinsiyet = input("Cinsiyet: ")
+    irk = input("Irk: ")
+
+    # Girilen bilgiler bir sözlükte saklanıyor ve hayvanlar listesine ekliyoruz.
+    hayvan = {
+        "tur": tur,
+        "kimlik_numarasi": kimlik_numarasi,
+        "dogum_tarihi": dogum_tarihi,
+        "cinsiyet": cinsiyet,
+        "irk": irk
+    }
+    hayvanlar.append(hayvan)
+    print("Hayvan başarıyla kaydedildi.")
+
+# Kayıtlı bir hayvanın bilgilerini düzenlemek için kullanılan fonksiyon.
+def kayit_duzenle(hayvanlar):
+    # Kullanıcıdan düzenlenecek hayvanın kimlik numarasını alıyoruz.
+    kimlik_numarasi = input("Düzenlemek istediğiniz hayvanın kimlik numarası: ")
+
+    # Girilen kimlik numarasına sahip hayvanı for döngüsünde döndürerek buluyoruz.
+    for hayvan in hayvanlar:
+        if hayvan["kimlik_numarasi"] == kimlik_numarasi:
+            # Mevcut bilgileri f-string kullanarak kullanıcıya sunuyoruz. f-string bir nevi format fonksiyonu görevi görüyor.
+            print(f"Mevcut bilgiler:\n Tür: {hayvan['tur']}\n Kimlik Numarası: {hayvan['kimlik_numarasi']}\n Doğum Tarihi: {hayvan['dogum_tarihi']}\n Cinsiyet: {hayvan['cinsiyet']}\n Irk: {hayvan['irk']}")
+            # Kullanıcıdan yeni bilgiler alınıp, boş bırakılan yerler mevcut değerini koruyor.
+            yeni_tur = input("Yeni tür (boş bırakırsanız mevcut değer kalır): ")
+            yeni_dogum_tarihi = input("Yeni doğum tarihi (boş bırakırsanız mevcut değer kalır): ")
+            yeni_cinsiyet = input("Yeni cinsiyet (boş bırakırsanız mevcut değer kalır): ")
+            yeni_irk = input("Yeni ırk (boş bırakırsanız mevcut değer kalır): ")
+
+            # Yeni bilgiler, girildiyse mevcut bilgiler yerine aktarılıp güncelleniyor.
+            if yeni_tur:
+                hayvan['tur'] = yeni_tur
+            if yeni_dogum_tarihi:
+                hayvan['dogum_tarihi'] = yeni_dogum_tarihi
+            if yeni_cinsiyet:
+                hayvan['cinsiyet'] = yeni_cinsiyet
+            if yeni_irk:
+                hayvan['irk'] = yeni_irk
+
+            print("Hayvan bilgileri başarıyla güncellendi.")
+            break
+    else:
+        print("Hayvan bulunamadı.")
+
+# Bir hayvana aşı kaydı eklemek için kullanılan fonksiyon.
+def asi_ekle(asilar, hayvanlar):
+    # Kullanıcıdan aşı eklenmek istenen hayvanın kimlik numarasını alıyoruz.
+    kimlik_numarasi = input("Aşı kaydı eklemek istediğiniz hayvanın kimlik numarası: ")
+
+    # Girilen kimlik numarasına sahip hayvanları for döngüsünde arayarak buluyoruz.
+    for hayvan in hayvanlar:
+        if hayvan["kimlik_numarasi"] == kimlik_numarasi:
+            # Kullanıcıdan aşı bilgilerini alıyoruz.
+            asi_adi = input("Aşının adı: ")
+            uygulama_tarihi = input("Uygulama tarihi: ")
+            veteriner_adi = input("Veteriner adı: ")
+
+            # Aşı bilgilerini bir sözlükte saklıyoruz ve aşılar listesine appendliyoruz.
+            asi = {
+                "kimlik_numarasi": kimlik_numarasi,
+                "asi_adi": asi_adi,
+                "uygulama_tarihi": uygulama_tarihi,
+                "veteriner_adi": veteriner_adi
+            }
+            asilar.append(asi)
+            print("Aşı kaydı başarıyla eklendi.")
+            break
+    else:
+        print("Hayvan bulunamadı.")
+
+# Bir hayvana beslenme kaydı eklemek için kullanılan fonksiyon.
+def beslenme_ekle(beslenme, hayvanlar):
+    # Kullanıcıdan besleme kaydı eklenmek istenen hayvanın kimlik numarasını alıyoruz.
+    kimlik_numarasi = input("Beslemek istediğiniz hayvanın kimlik numarası: ")
+
+    # Girilen kimlik numarasına sahip hayvanı for döngüsünde buluyoruz.
+    for hayvan in hayvanlar:
+        if hayvan["kimlik_numarasi"] == kimlik_numarasi:
+            # Kullanıcıdan beslenme bilgilerini alıyoruz.
+            besleme_tarihi_saati = input("Hayvanın beslendiği tarih/saat: ")
+            yiyecek = input("Hayvanın yediği yiyecek türü: ")
+            miktar = input("Hayvanın yediği miktar(kg): ")
+
+            # Beslenme bilgilerini bir sözlükte saklıyoruz ve beslenme listesine ekliyoruz.
+            yemek = {
+                "kimlik_numarasi": kimlik_numarasi,
+                "beslenme_zamanı": besleme_tarihi_saati,
+                "yiyecek":yiyecek,
+                "miktar":miktar
+            }
+            beslenme.append(yemek)
+            print("Beslenme kaydı başarıyla eklendi.")
+            break
+    else:
+        print("Hayvan bulunamadı.")
+
+# Kayıtlı bir hayvanı silmek için kullanılan fonksiyon.
+def kayit_sil(hayvanlar):
+    # Kullanıcıdan silmek istediği hayvanın kimlik numarası alıyoruz.
+    kimlik_numarasi = input("Silmek istediğiniz hayvanın kimlik numarası: ")
+
+    # Girilen kimlik numarasına sahip hayvanı for ile bulup listeden siliyoruz.
+    for hayvan in hayvanlar:
+        if hayvan["kimlik_numarasi"] == kimlik_numarasi:
+            hayvanlar.remove(hayvan)
+            print("Hayvan başarıyla silindi.")
+            break
+    else:
+        print("Hayvan bulunamadı.")
+        
+#Kayıtlı bir hayvanın kurbanlık için hesaplama yapmayı sağlayan fonksiyon.
+def kurban_hesaplama(hayvanlar):
+    canli_agirlik = float(input("Hayvanın canlı ağırlığını girin (kg): "))
+    gun_sayisi = int(input("Gün sayısını girin: "))
+    yem_fiyati = int(input("Güncel 1 Kg yem fiyatını giriniz: "))
+    
+    min_yem = canli_agirlik * 0.025
+    max_yem = canli_agirlik * 0.035
+    ortalama_yem = (min_yem + max_yem) / 2
+            
+    gunluk_kilo_alimi = 1.25
+            
+    toplam_yem = ortalama_yem * gun_sayisi
+    toplam_kilo_alimi = gunluk_kilo_alimi * gun_sayisi
+    tutar = ortalama_yem*gun_sayisi*yem_fiyati
+    
+    print(f"Günlük yem miktarı (ortalama): {ortalama_yem:.2f} kg")
+    print(f"Toplam yem miktarı: {toplam_yem:.2f} kg")
+    print(f"Toplam kilo alımı: {toplam_kilo_alimi:.2f} kg")   
+    print(f"Hayvanın bu sürede toplam yem harcaması: {tutar:.2f} TL'dir")
+
+# Menüyü gösteren ve kullanıcının seçim yapmasını sağlayan fonksiyon.
+def menu():
+    while True:
+        print("\n--- Hayvan Bilgi Sistemi ---")
+        print("1. Küçükbaş Hayvan Kayıt")
+        print("2. Büyükbaş Hayvan Kayıt")
+        print("3. Kayıt Düzenleme")
+        print("4. Aşı Kaydı")
+        print("5. Beslenme Kaydı")
+        print("6. Kurbanlık Hesaplama")
+        print("7. Kayıt Silme")
+        print("8. Çıkış")
+        
+        secim = input("Seçiminiz: ")
+
+        if secim == "1" or secim == "2":
+            hayvan_kayit(hayvanlar)
+        elif secim == "3":
+            kayit_duzenle(hayvanlar)
+        elif secim == "4":
+            asi_ekle(asilar, hayvanlar)
+        elif secim == "5":
+            beslenme_ekle(beslenme, hayvanlar)
+        elif secim == "6":
+            kurban_hesaplama(hayvanlar)
+        elif secim == "7":
+            kayit_sil(hayvanlar)
+        elif secim == "8":
+            print("Çıkış yapılıyor...")
+            break
+        else:
+            print("Geçersiz seçim, lütfen tekrar deneyin.")
+
+menu()
