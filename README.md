@@ -1,0 +1,1 @@
+Bu proje Algoritma ve Programlama dersi Bahar Dönemi final projesidir. Bu python ile yaptığım ilk projedir. Derste öğrendiğim bilgileri tekrar edip üzerinde farklı küçük projeler yaparak geliştirdim ve yine ufak çaplı bir proje olan Hayvan Bilgi Sistemi projesini yaptım.
